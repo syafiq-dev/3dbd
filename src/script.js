@@ -125,8 +125,8 @@ fontLoader.load(
             donut.position.x = (Math.random() - 0.5) * 10
             donut.position.y = (Math.random() - 0.5) * 10
             donut.position.z = (Math.random() - 0.5) * 10
-            donut.rotation.x = Math.random() * Math.PI
-            donut.rotation.y = Math.random() * Math.PI
+            // donut.rotation.x = Math.random() * Math.PI
+            // donut.rotation.y = Math.random() * Math.PI
             const scale = -MathUtils.randFloat(minS,maxS)
             donut.scale.set(scale, scale, scale)
 
@@ -138,8 +138,8 @@ fontLoader.load(
             donut.position.x = (Math.random() - 0.5) * 10
             donut.position.y = (Math.random() - 0.5) * 10
             donut.position.z = (Math.random() - 0.5) * 10
-            donut.rotation.x = Math.random() * Math.PI
-            donut.rotation.y = Math.random() * Math.PI
+            // donut.rotation.x = Math.random() * Math.PI
+            // donut.rotation.y = Math.random() * Math.PI
             const scale = -MathUtils.randFloat(minS,maxS)
             donut.scale.set(scale, scale, scale)
 
