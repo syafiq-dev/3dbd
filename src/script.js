@@ -55,8 +55,23 @@ fontLoader.load(
         const cyanMat = new THREE.MeshMatcapMaterial({ matcap: cyan1 })
 
         // Text
-        const textGeometry = new TextGeometry(
-            't e x t',
+        const text1Geometry = new TextGeometry(
+            'To my beloved girlfriend...',
+            {
+                font: font,
+                size: 0.15,
+                height: 0.2,
+                curveSegments: 12,
+                bevelEnabled: true,
+                bevelThickness: 0.05,
+                bevelSize: 0.01,
+                bevelOffset: 0,
+                bevelSegments: 5
+            }
+        )
+        text1Geometry.center()
+        const text2Geometry = new TextGeometry(
+            'Happy Birthday!',
             {
                 font: font,
                 size: 0.5,
@@ -69,10 +84,57 @@ fontLoader.load(
                 bevelSegments: 5
             }
         )
-        textGeometry.center()
+        text2Geometry.center()
+        const text3Geometry = new TextGeometry(
+            'specially made for Noor Aini bt. Afandi',
+            {
+                font: font,
+                size: 0.1,
+                height: 0.2,
+                curveSegments: 12,
+                bevelEnabled: true,
+                bevelThickness: 0.08,
+                bevelSize: 0.008,
+                bevelOffset: 0,
+                bevelSegments: 5
+            }
+        )
+        text3Geometry.center()
+        const iluGeometry = new TextGeometry(
+            'i love you',
+            {
+                font: font,
+                size: 0.1,
+                height: 0.2,
+                curveSegments: 12,
+                bevelEnabled: true,
+                bevelThickness: 0.08,
+                bevelSize: 0.008,
+                bevelOffset: 0,
+                bevelSegments: 5
+            }
+        )
+        iluGeometry.center()
 
-        const text = new THREE.Mesh(textGeometry, purpleMat)
-        scene.add(text)
+        const text1 = new THREE.Mesh(text1Geometry, pinkMat1)
+        const text2 = new THREE.Mesh(text2Geometry, purpleMat)
+        const text3 = new THREE.Mesh(text3Geometry, cyanMat)
+        const ilu = new THREE.Mesh(iluGeometry, pinkMat1)
+
+        text1.position.x = -1.1
+        text1.position.y = .6
+        text1.scale.z = .4
+        text3.position.x = 1.1
+        text3.position.y = -.6
+        text3.scale.z = .2
+        ilu.position.x = (Math.random()-0.5) * 3
+        ilu.position.y = 4.5 * (Math.random() < 0.5 ? -1 : 1)
+        ilu.scale.z = .2
+
+        scene.add(text1)
+        scene.add(text2)
+        scene.add(text3)
+        scene.add(ilu)
 
         // Donuts
         const donutGeometry = new THREE.TorusGeometry(0.3, 0.2, 32, 64)
@@ -102,45 +164,48 @@ fontLoader.load(
             bevelSegments: 4
         };
         const heartGeometry = new THREE.ExtrudeGeometry( heartShape, extrudeSettings );
+        // const heartGeometry = new THREE.IcosahedronGeometry(1,0)
 
         const minS = .01, maxS = .02
 
-        for(let i = 0; i < 50; i++)
+        for(let i = 0; i < 150; i++)
         {
             const donut = new THREE.Mesh(heartGeometry, pinkMat1)
             donut.position.x = (Math.random() - 0.5) * 10
             donut.position.y = (Math.random() - 0.5) * 10
             donut.position.z = (Math.random() - 0.5) * 10
-            // donut.rotation.x = Math.random() * Math.PI
-            // donut.rotation.y = Math.random() * Math.PI
-            const scale = Math.random() / -30
+            donut.rotation.x = MathUtils.degToRad((Math.random() - 0.5) * 90)
+            donut.rotation.y = MathUtils.degToRad(MathUtils.randFloat(0,180))
+            const scale = -MathUtils.randFloat(.01,.04)
 
             donut.scale.set(scale, scale, scale)
 
             scene.add(donut)
         }
-        for(let i = 0; i < 150; i++)
-        {
-            const donut = new THREE.Mesh(heartGeometry, pinkMat2)
-            donut.position.x = (Math.random() - 0.5) * 10
-            donut.position.y = (Math.random() - 0.5) * 10
-            donut.position.z = (Math.random() - 0.5) * 10
-            // donut.rotation.x = Math.random() * Math.PI
-            // donut.rotation.y = Math.random() * Math.PI
-            const scale = -MathUtils.randFloat(minS,maxS)
-            donut.scale.set(scale, scale, scale)
-
-            scene.add(donut)
-        }
-        for(let i = 0; i < 150; i++)
+        for(let i = 0; i < 100; i++)
         {
             const donut = new THREE.Mesh(heartGeometry, cyanMat)
             donut.position.x = (Math.random() - 0.5) * 10
             donut.position.y = (Math.random() - 0.5) * 10
             donut.position.z = (Math.random() - 0.5) * 10
-            // donut.rotation.x = Math.random() * Math.PI
-            // donut.rotation.y = Math.random() * Math.PI
-            const scale = -MathUtils.randFloat(minS,maxS)
+            donut.rotation.x = MathUtils.degToRad((Math.random() - 0.5) * 90)
+            donut.rotation.y = MathUtils.degToRad(MathUtils.randFloat(0,180))
+            const scale = -MathUtils.randFloat(.005,.02)
+
+            donut.scale.set(scale, scale, scale)
+
+            scene.add(donut)
+        }
+        for(let i = 0; i < 50; i++)
+        {
+            const donut = new THREE.Mesh(heartGeometry, pinkMat2)
+            donut.position.x = (Math.random() - 0.5) * 10
+            donut.position.y = (Math.random() - 0.5) * 10
+            donut.position.z = (Math.random() - 0.5) * 10
+            donut.rotation.x = MathUtils.degToRad((Math.random() - 0.5) * 90)
+            donut.rotation.y = MathUtils.degToRad(MathUtils.randFloat(0,180))
+            const scale = -MathUtils.randFloat(.01,.04)
+
             donut.scale.set(scale, scale, scale)
 
             scene.add(donut)
@@ -180,9 +245,9 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.x = 1
-camera.position.y = 1
-camera.position.z = 2
+camera.position.x = -4
+camera.position.y = -1.5
+camera.position.z = 4
 scene.add(camera)
 
 // Controls
