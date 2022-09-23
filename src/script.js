@@ -10,7 +10,7 @@ import { MathUtils } from 'three'
  * Base
  */
 // Debug
-const gui = new dat.GUI()
+//const gui = new dat.GUI()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
